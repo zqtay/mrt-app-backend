@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
+import 'module-alias/register';
 import stations from "./routes/stations";
 import stationInfo from "./routes/station-info";
 import arrivals from "./routes/arrivals";
