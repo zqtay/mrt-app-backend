@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
+import arrivals from "./routes/arrivals";
 
 const app = express();
 const server = http.createServer(app);
@@ -23,6 +24,9 @@ app.use((req, res, next) => {
 // Set max request body limit
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+
+// Routes
+app.use("/", arrivals);
 
 // Main page
 app.get("/", (req, res) => {
