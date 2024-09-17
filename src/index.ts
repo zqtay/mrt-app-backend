@@ -2,6 +2,7 @@ import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
 import stations from "./routes/stations";
+import stationInfo from "./routes/station-info";
 import arrivals from "./routes/arrivals";
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Routes
 app.use("/", stations);
+app.use("/", stationInfo);
 app.use("/", arrivals);
 
 // Main page

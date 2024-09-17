@@ -1,0 +1,20 @@
+import express, { Request, Response, NextFunction } from "express";
+import bodyParser from "body-parser";
+import { getStationInfo } from "@/lib/smrt";
+
+const router = express.Router();
+router.use(bodyParser.json());
+
+// GET
+router.get("/stations/:name/info", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const name = req.params.name;
+    const data = await getStationInfo(name);
+    res.status(200).json(data);
+
+  } catch (error) {
+    next(error);
+  }
+});
+
+export default router;

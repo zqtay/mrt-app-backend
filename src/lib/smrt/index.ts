@@ -25,3 +25,15 @@ export const getAllStations = async () => {
   );
   return res.json();
 };
+
+export const getStationInfo = async (station: string) => {
+  const res = await fetch(
+    `${SMRT_API_ROUTE}/station_info/?name=${station}`,
+    {
+      headers: {
+        "Referer": SMRT_JOURNEY_URL
+      }
+    }
+  );
+  return res.json();
+};
