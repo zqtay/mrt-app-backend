@@ -37,3 +37,15 @@ export const getStationInfo = async (station: string) => {
   );
   return res.json();
 };
+
+export const getNotifications = async () => {
+  const res = await fetch(
+    `${SMRT_API_ROUTE}/notification/`,
+    {
+      headers: {
+        "Referer": SMRT_JOURNEY_URL
+      }
+    }
+  );
+  return res.json();
+};

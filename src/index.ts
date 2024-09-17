@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import stations from "./routes/stations";
 import stationInfo from "./routes/station-info";
 import arrivals from "./routes/arrivals";
+import notifications from "./routes/notifications";
 
 const app = express();
 const server = http.createServer(app);
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use("/", stations);
 app.use("/", stationInfo);
 app.use("/", arrivals);
+app.use("/", notifications);
 
 // Main page
 app.get("/", (req, res) => {
