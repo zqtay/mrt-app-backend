@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
+import stations from "./routes/stations";
 import arrivals from "./routes/arrivals";
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Routes
+app.use("/", stations);
 app.use("/", arrivals);
 
 // Main page
