@@ -1,14 +1,16 @@
 import express from "express";
-import http from "http";
 import bodyParser from "body-parser";
 import 'module-alias/register';
+import dotenv from 'dotenv';
 import stations from "./routes/stations";
 import stationInfo from "./routes/station-info";
 import arrivals from "./routes/arrivals";
 import notifications from "./routes/notifications";
 
+dotenv.config();
+const { PORT } = process.env;
+
 const app = express();
-const server = http.createServer(app);
 
 // Disable headers
 app.disable('x-powered-by');
@@ -41,7 +43,6 @@ app.get("/", (req, res) => {
 });
 
 // Start listening on a port
-const PORT: number = parseInt(process.env.PORT || "3000", 10);
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
