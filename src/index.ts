@@ -8,7 +8,7 @@ import arrivals from "./routes/arrivals";
 import notifications from "./routes/notifications";
 
 dotenv.config();
-const { PORT } = process.env;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
