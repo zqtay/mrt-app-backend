@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import 'module-alias/register';
 import dotenv from 'dotenv';
+import cors from "cors";
 import stations from "./routes/stations";
 import stationInfo from "./routes/station-info";
 import arrivals from "./routes/arrivals";
@@ -30,6 +31,12 @@ app.use((req, res, next) => {
 // Set max request body limit
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+
+// Enable CORS
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN,
+};
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/", stations);
